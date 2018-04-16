@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/toolbarInformation"
-        android:title="ⓘ"
+        android:title="Om os"
         android:orderInCategory="2"
         app:showAsAction="always" />
 
