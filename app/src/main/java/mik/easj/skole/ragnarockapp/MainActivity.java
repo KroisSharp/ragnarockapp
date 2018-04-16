@@ -30,7 +30,7 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
-
+ 
     private final String TWIT_CONS_KEY = "3rUaDPL9mO4qzMW335RLfo9dv";
     private final String TWIT_CONS_SEC_KEY = "v81klgIw2vA4n8vgyXt2Wh2SaHEVANx5Ds17XQVamyC7TFxn2r";
 
