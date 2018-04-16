@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import twitter4j.QueryResult;
@@ -68,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             
             case R.id.toolbarSorterEfterNyeste:
-                // code coming
+                SortId();
+                return true;
             case R.id.toolbarSorterEfterRetweets:
                 // code coming
             case R.id.toolbarSorterEfterLikes:
@@ -99,8 +102,11 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+   public ArrayList<Tweet> tweets;
+
     class SearchOnTwitter extends AsyncTask<String, Void, Integer> {
-        ArrayList<Tweet> tweets;
+
+        ArrayList<Tweet> tweetss = tweets;
         final int SUCCESS = 0;
         final int FAILURE = SUCCESS + 1;
 
@@ -133,11 +139,12 @@ public class MainActivity extends AppCompatActivity {
                 final List<twitter4j.Status> tweets = result.getTweets();
                 StringBuilder str = new StringBuilder();
                 if (tweets != null) {
-                    this.tweets = new ArrayList<Tweet>();
+                    this.tweetss = new ArrayList<Tweet>();
                     for (twitter4j.Status tweet : tweets) {
                         str.append("@" + tweet.getUser().getScreenName() + " - " + tweet.getText() + "\n");
                         System.out.println(str);
-                        this.tweets.add(new Tweet("@" + tweet.getUser().getScreenName(), tweet.getText()));
+
+                        this.tweetss.add(new Tweet("@" + tweet.getUser().getScreenName(), tweet.getText(), tweet.getId()));
                     }
                     return SUCCESS;
                 }
@@ -161,6 +168,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void SortId() {
+        Collections.sort(tweets, new Comparator<Tweet>() {
+            @Override
+            public int compare(Tweet bird1, Tweet bird2) {
+
+                int bird2int = (int) bird2.getId();
+                int bird1int = (int) bird1.getId();
+
+                return (bird2int - bird1int);
+            }
+        });
+        adapter.notifyDataSetChanged();
+    }
 
 
 }

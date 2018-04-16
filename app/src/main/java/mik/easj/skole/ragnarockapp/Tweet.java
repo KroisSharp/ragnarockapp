@@ -9,10 +9,17 @@ import java.io.Serializable;
 public class Tweet implements Serializable {
     String tweetBy;
     String tweet;
+    long id;
 
-    public Tweet(String tweetBy, String tweet) {
+
+    public Tweet(String tweetBy, String tweet, long id) {
         this.tweetBy = tweetBy;
         this.tweet = tweet;
+        this.id=id;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getTweetBy() {
