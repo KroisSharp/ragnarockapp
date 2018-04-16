@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         
         switch (item.getItemId()){
 
-            case R.id.toolbarInformation:
+            case R.id.toolbarOmOs:
                 Intent intent = new Intent(this, InfoActivity.class);
                 startActivity(intent);
                 return true;

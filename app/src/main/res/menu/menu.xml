@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/toolbarInformation"
-        android:title="Om os"
+        android:id="@+id/toolbarOmOs"
+        android:title="@string/om_os"
         android:orderInCategory="2"
         app:showAsAction="always" />
 
