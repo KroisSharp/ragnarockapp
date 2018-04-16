@@ -1,12 +1,16 @@
 package mik.easj.skole.ragnarockapp;
 
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 public class InfoActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +36,20 @@ public class InfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void Btn_instagram(View view) {
-        Uri uri = Uri.parse("https://www.instagram.com/museumragnarock/");
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
+        String Hjemmeside = "https://www.instagram.com/museumragnarock/";
+        Uri uri = Uri.parse(Hjemmeside);
+        Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+        likeIng.setPackage("com.instagram.android");
+
+        try {
+            startActivity(likeIng);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(Hjemmeside)));
+        }
     }
 
     public void Btn_Facebook(View view) {
