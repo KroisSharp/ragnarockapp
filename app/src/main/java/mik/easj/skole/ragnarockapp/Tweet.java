@@ -1,10 +1,12 @@
 package mik.easj.skole.ragnarockapp;
 
+import java.io.Serializable;
+
 /**
  * Created by Benjamin-pc on 16-04-2018.
  */
 
-public class Tweet {
+public class Tweet implements Serializable {
     String tweetBy;
     String tweet;
 

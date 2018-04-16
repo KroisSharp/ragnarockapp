@@ -1,8 +1,12 @@
 package mik.easj.skole.ragnarockapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private final String TWIT_CONS_SEC_KEY = "v81klgIw2vA4n8vgyXt2Wh2SaHEVANx5Ds17XQVamyC7TFxn2r";
 
     ListView mainListView;
+    private ArrayAdapter<Tweet> adapter = null;
 
 
     @Override
@@ -36,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        new SearchOnTwitter().execute("#mbmeasjhack");
+        new SearchOnTwitter().execute("#RagnaRock");
     }
 
     class SearchOnTwitter extends AsyncTask<String, Void, Integer> {
@@ -70,15 +75,16 @@ public class MainActivity extends AppCompatActivity {
                 query.setCount(50);
                 QueryResult result;
                 result = twitter.search(query);
-                List<twitter4j.Status> tweets = result.getTweets();
+                final List<twitter4j.Status> tweets = result.getTweets();
                 StringBuilder str = new StringBuilder();
                 if (tweets != null) {
-                    this.tweets = new ArrayList<Tweet>();
+                    this.tweets = new ArrayList<>();
                     for (twitter4j.Status tweet : tweets) {
                         str.append("@" + tweet.getUser().getScreenName() + " - " + tweet.getText() + "\n");
                         System.out.println(str);
                         this.tweets.add(new Tweet("@" + tweet.getUser().getScreenName(), tweet.getText()));
                     }
+
                     return SUCCESS;
                 }
             } catch (Exception e) {
@@ -93,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
             if (result == SUCCESS) {
                 mainListView.setAdapter(new TweetAdapter(MainActivity.this, tweets));
+
+
+
             } else {
                 Toast.makeText(MainActivity.this, "Error" + result, Toast.LENGTH_SHORT).show();
             }
