@@ -60,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, InfoActivity.class);
                 startActivity(intent);
                 return true;
-
-
+            
             case R.id.toolbarSorterEfterNyeste:
                 // code coming
             case R.id.toolbarSorterEfterRetweets:
