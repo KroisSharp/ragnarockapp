@@ -12,6 +12,10 @@
         layout="@layout/toolbar">
     </include>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
     <ListView
         android:id="@+id/mainListView"
         android:layout_width="match_parent"
@@ -19,6 +23,28 @@
         android:isScrollContainer="true">
 
     </ListView>
+
+
+    <ImageButton
+        android:id="@+id/mainFloatBtn"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/oval"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:elevation="10dp"
+        android:layout_marginBottom="65dp"
+        android:layout_marginRight="25dp"
+        android:src="@drawable/twitteraddbtn"
+        android:onClick="mainFloatBtnClicked"
+
+
+
+
+
+        />
+
+    </RelativeLayout>
 
 
 

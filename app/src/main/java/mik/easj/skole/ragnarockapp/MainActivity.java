@@ -1,12 +1,15 @@
 package mik.easj.skole.ragnarockapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toolbar;
 import android.widget.ListView;
@@ -24,6 +27,7 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private final String TWIT_CONS_KEY = "3rUaDPL9mO4qzMW335RLfo9dv";
     private final String TWIT_CONS_SEC_KEY = "v81klgIw2vA4n8vgyXt2Wh2SaHEVANx5Ds17XQVamyC7TFxn2r";
 
@@ -35,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainListView = (ListView) findViewById(R.id.mainListView);
+
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
     }
 
     @Override
@@ -74,6 +80,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         new SearchOnTwitter().execute("#mbmeasjhack");
+    }
+
+    public void mainFloatBtnClicked(View view) {
+        Intent intent = null;
+        try {
+            // get the Twitter app if possible
+            this.getPackageManager().getPackageInfo("com.twitter.android", 0);
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=magnus_em"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        } catch (Exception e) {
+            // no Twitter app, revert to browser
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/magnus_em"));
+        }
+        this.startActivity(intent);
     }
 
     class SearchOnTwitter extends AsyncTask<String, Void, Integer> {
@@ -134,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Error" + result, Toast.LENGTH_SHORT).show();
             }
         }
+
+
     }
 
 
