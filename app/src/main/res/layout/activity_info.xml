@@ -65,6 +65,7 @@
                 android:textAlignment="center" />
 
             <Button
+                android:textAllCaps="false"
                 android:id="@+id/Button_SeKort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,6 +88,7 @@
                 android:textAlignment="center" />
 
             <Button
+                android:textAllCaps="false"
                 android:id="@+id/Button_SeEvents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,22 +104,32 @@
                 android:textStyle="bold" />
 
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/Button_Youtube"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/youtuberesize"
+                    android:onClick="Btn_Youtube" />
+
+                <Button
+                    android:layout_marginRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/facebookresize"
+                    android:onClick="Btn_Facebook"/>
 
                 <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/instagramresize"
+                    android:onClick="Btn_instagram"/>
 
             </LinearLayout>
 

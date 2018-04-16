@@ -46,4 +46,22 @@ public class InfoActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
+
+    public void Btn_Youtube(View view) {
+        Uri uri = Uri.parse("https://www.youtube.com/user/DanmarksRockmuseum");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    public void Btn_instagram(View view) {
+        Uri uri = Uri.parse("https://www.instagram.com/museumragnarock/");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    public void Btn_Facebook(View view) {
+        Uri uri = Uri.parse("https://www.facebook.com/MuseumRagnarock");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
 }
