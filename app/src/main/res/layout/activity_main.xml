@@ -7,11 +7,19 @@
     android:orientation="vertical"
     tools:context="mik.easj.skole.ragnarockapp.MainActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar">
+    </include>
+
     <ListView
         android:id="@+id/mainListView"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1" >
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true">
+
     </ListView>
+
+
 
 </LinearLayout>

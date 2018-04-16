@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private final String TWIT_CONS_KEY = "3rUaDPL9mO4qzMW335RLfo9dv";
     private final String TWIT_CONS_SEC_KEY = "v81klgIw2vA4n8vgyXt2Wh2SaHEVANx5Ds17XQVamyC7TFxn2r";
 
-    ListView mainListView;
+    private ListView mainListView;
     private ArrayAdapter<Tweet> adapter = null;
 
 
@@ -34,14 +39,45 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainListView = (ListView) findViewById(R.id.mainListView);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.toolbarOmOs:
+                Intent intent = new Intent(this, InfoActivity.class);
+                startActivity(intent);
+                return true;
+
+
+            case R.id.toolbarSorterEfterNyeste:
+                // code coming
+            case R.id.toolbarSorterEfterRetweets:
+                // code coming
+            case R.id.toolbarSorterEfterLikes:
+                // code coming
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     //bruger det valgte Twitter # til at søge på
     @Override
     protected void onStart() {
         super.onStart();
-        new SearchOnTwitter().execute("#RagnaRock");
+        new SearchOnTwitter().execute("#mbmeasjhack");
     }
 
     class SearchOnTwitter extends AsyncTask<String, Void, Integer> {
@@ -78,13 +114,12 @@ public class MainActivity extends AppCompatActivity {
                 final List<twitter4j.Status> tweets = result.getTweets();
                 StringBuilder str = new StringBuilder();
                 if (tweets != null) {
-                    this.tweets = new ArrayList<>();
+                    this.tweets = new ArrayList<Tweet>();
                     for (twitter4j.Status tweet : tweets) {
                         str.append("@" + tweet.getUser().getScreenName() + " - " + tweet.getText() + "\n");
                         System.out.println(str);
                         this.tweets.add(new Tweet("@" + tweet.getUser().getScreenName(), tweet.getText()));
                     }
-
                     return SUCCESS;
                 }
             } catch (Exception e) {
@@ -99,9 +134,6 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
             if (result == SUCCESS) {
                 mainListView.setAdapter(new TweetAdapter(MainActivity.this, tweets));
-
-
-
             } else {
                 Toast.makeText(MainActivity.this, "Error" + result, Toast.LENGTH_SHORT).show();
             }
