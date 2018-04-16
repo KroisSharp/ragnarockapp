@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/toolbarOmOs"
+        android:title="@string/om_os"
+        android:orderInCategory="2"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/toolbarSorterEfterNyeste"
+        android:title="@string/sorter_efter_nyeste"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:id="@+id/toolbarSorterEfterRetweets"
+        android:title="@string/sorter_efter_retweets"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:id="@+id/toolbarSorterEfterLikes"
+        android:title="@string/sorter_efter_likes"
+        app:showAsAction="never">
+    </item>
+
+</menu>

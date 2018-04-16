@@ -1,8 +1,14 @@
 package mik.easj.skole.ragnarockapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toolbar;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private final String TWIT_CONS_KEY = "3rUaDPL9mO4qzMW335RLfo9dv";
     private final String TWIT_CONS_SEC_KEY = "v81klgIw2vA4n8vgyXt2Wh2SaHEVANx5Ds17XQVamyC7TFxn2r";
 
-    ListView mainListView;
+    private ListView mainListView;
 
 
     @Override
@@ -29,7 +35,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainListView = (ListView) findViewById(R.id.mainListView);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.toolbarOmOs:
+                Intent intent = new Intent(this, InfoActivity.class);
+                startActivity(intent);
+                return true;
+
+
+            case R.id.toolbarSorterEfterNyeste:
+                // code coming
+            case R.id.toolbarSorterEfterRetweets:
+                // code coming
+            case R.id.toolbarSorterEfterLikes:
+                // code coming
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     //bruger det valgte Twitter # til at søge på
