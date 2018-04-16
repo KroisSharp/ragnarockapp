@@ -3,13 +3,13 @@
     <string name="sorter_efter_nyeste">Sorter efter nyeste</string>
     <string name="sorter_efter_retweets">Sorter efter retweets</string>
     <string name="sorter_efter_likes">Sorter efter likes</string>
-    <string name="vningstider_amp_entr"><![CDATA[Åvningstider & entré]]></string>
+    <string name="vningstider_amp_entr"><![CDATA[Åbningstider & entré]]></string>
     <string name="rabalderstr_de_16_musicon_4000_roskilde">Rabalderstræde 16, Musicon 4000 Roskilde</string>
     <string name="nfind_os_p">Find os på:</string>
     <string name="mandag_lukket_ntirsdag_10_00_17_00_nonsdag_10_00_22_00_ntorsdag_s_ndag_10_00_17_00">Mandag: Lukket\nTirsdag: 10:00 - 17:00\n Onsdag: 10:00-22:00\n Torsdag-Søndag 10:00-17:00</string>
     <string name="se_p_kort">Se på kort</string>
     <string name="priser">Priser</string>
     <string name="voksne_95kr_ngrupper_min_15pers_80kr_pr_pers_nb_rn_og_unge_0_17_r_gratis_n_skoleklasser_b_rnehaver_gratis">Voksne: 95kr\nGrupper(min 15pers.) 80kr pr. pers.\nBørn og unge 0-17år: Gratis\nSkoleklasser, børnehaver: Gratis</string>
-    <string name="kommende_events">kommende events</string>
+    <string name="kommende_events">Kommende events</string>
     <string name="om_os">Om os</string>
 </resources>
