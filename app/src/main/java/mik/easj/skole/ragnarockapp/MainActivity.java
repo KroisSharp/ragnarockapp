@@ -135,9 +135,11 @@ public class MainActivity extends AppCompatActivity {
                 if (tweets != null) {
                     this.tweets = new ArrayList<Tweet>();
                     for (twitter4j.Status tweet : tweets) {
-                        str.append("@" + tweet.getUser().getScreenName() + " - " + tweet.getText() + "\n");
+                        String msgTweet = CheckForRude(tweet.getText());
+                        str.append("@" + tweet.getUser().getScreenName() + " - " + msgTweet + "\n");
                         System.out.println(str);
-                        this.tweets.add(new Tweet("@" + tweet.getUser().getScreenName(), tweet.getText()));
+                        int i = (int)tweet.getId();
+                        this.tweets.add(new Tweet("@" + tweet.getUser().getScreenName(), tweet.getText(),i ));
                     }
                     return SUCCESS;
                 }
@@ -161,6 +163,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private String CheckForRude(String x) {
+        if (x.contains("shit")){
+            return "";
+        }
+        else {return x;}
+    }
 
 
 }
